@@ -1,6 +1,2 @@
 # zeqqe.dev
-### Sites:
-
-##### [zeqqe.dev](https://zeqqe.dev)
-
-##### [zeqqe-dev.pages.dev](https://zeqqe-dev.pages.dev)
+### This is my website source HTML.
