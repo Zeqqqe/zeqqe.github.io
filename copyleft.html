@@ -1,85 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Copyleft — zeqqe</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 2rem;
-      background-color: #0e101a; /* page background */
-      color: #e4e6f0;            /* light text */
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-    }
+<footer class="site-footer" role="contentinfo">
+  <small>
+    <span aria-hidden="true">🄯</span>
+    <span class="sr-only">Copyleft</span>
+    2025 Zeqqe — Except where noted, site content is licensed under
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+    Site code is licensed under
+    <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPL-3.0-or-later</a>.
+    Source on <a href="https://github.com/Zeqqqe/zeqqe.github.io">GitHub</a>.
+  </small>
+</footer>
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: #1a1c2c; /* card/panel background */
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-
-    h1 {
-      color: #ffffff;
-      font-size: 1.8rem;
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      margin-bottom: 1.2rem;
-    }
-
-    a {
-      color: #6d6dff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .footer {
-      margin-top: 2rem;
-      font-size: 0.9em;
-      color: #bbbbcc;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Copyleft Notice</h1>
-
-    <p>© 2025 zeqqe. <strong>All content on my GitHub is open source.</strong></p>
-
-    <p>
-      Unless otherwise specified, the code and content in this repository are released under open source licenses that permit 
-      <strong>use, modification, and redistribution</strong>.
-    </p>
-
-    <p>
-      By making this work available, I affirm my commitment to the principles of free and open source software (FOSS). 
-      You are free to use, study, modify, and share this work, provided that you comply with the terms of the applicable license(s).
-    </p>
-
-    <p>
-      Please refer to the <a href="LICENSE">LICENSE</a> file(s) in each repository for specific legal terms and conditions.
-    </p>
-
-    <p>
-      Contributions and improvements are welcome. If you create derivative works, proper attribution and license compatibility must be maintained.
-    </p>
-
-    <p>
-      This project supports the ethos of copyleft: freedom to use comes with the responsibility to preserve that freedom for others.
-    </p>
-
-    <div class="footer">
-      — zeqqe
-    </div>
-  </div>
-</body>
-</html>
+<style>
+  .site-footer{
+    margin-top:2rem;padding:1rem 0;border-top:1px solid rgba(0,0,0,.08)
+  }
+  .site-footer small{font-size:.875rem;opacity:.8}
+  .site-footer a{text-decoration:underline}
+  .sr-only{position:absolute;left:-9999px}
+  @media (prefers-color-scheme: dark){
+    .site-footer{border-top-color:rgba(255,255,255,.12)}
+    .site-footer small{opacity:.85}
+  }
+</style>
