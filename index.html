@@ -1,153 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zeqqe's portfolio</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://www.kernel.org/theme/images/logos/favicon.png">
-    
-    <!-- Open Graph for Social Media Embeds -->
-    <meta property="og:title" content="zeqqe.dev - Open Source Portfolio">
-    <meta property="og:description" content="A portfolio documenting projects and development principles with a retro-futuristic aesthetic.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Zalgoo/.github/refs/heads/main/assets/zalgo_img.png">
-    <meta property="og:url" content="https://zeqqe.dev">
-    
-    <!-- Twitter Card for Social Media Embeds -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="zeqqe.dev - Open Source Portfolio">
-    <meta name="twitter:description" content="A portfolio documenting projects and development principles with a retro-futuristic aesthetic.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Zalgoo/.github/refs/heads/main/assets/zalgo_img.png">
-    <link rel="alternate" type="application/rss+xml" title="zeqqe.dev Projects" href="feed.xml">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for a modern feel -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .terminal-block {
-            font-family: 'JetBrains Mono', monospace;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>zeqqe.dev – Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://www.kernel.org/theme/images/logos/favicon.png" type="image/png" />
+
+  <!-- Font Awesome for toggle icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      /* Light mode (modern beige / flat, beige accents) */
+      --bg: #f7f3e9;
+      --text: #2a2a2a;
+      --header-bg: #f1e9d9;
+      --link: #9c7b46;       /* beige-brown accent */
+      --link-hover: #b8925a; /* slightly brighter beige */
+      --card-bg: #ffffff;
+      --border: #ddd2c2;
+    }
+
+    body.dark {
+      /* Dark mode (Discord-inspired w/ blurple accents) */
+      --bg: #181a1f;        
+      --text: #d1d5db;      
+      --header-bg: #1e1f24; 
+      --link: #5865f2;      
+      --link-hover: #7289da;
+      --card-bg: #20222b;   
+      --border: #2a2d35;    
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+      line-height: 1.6;
+    }
+
+    header, footer {
+      background-color: var(--header-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--link);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--link-hover);
+    }
+
+    /* Toggle button (minimal, icon-based) */
+    #mode-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.4rem 0.6rem;
+      color: var(--link);
+      transition: background 0.2s, color 0.2s, border 0.2s;
+    }
+    #mode-toggle:hover {
+      background: rgba(0,0,0,0.05);
+    }
+    body.dark #mode-toggle:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: background 0.3s, border 0.3s;
+    }
+
+    section h2 {
+      font-size: 1.3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--link);
+      transition: color 0.2s;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: var(--link-hover);
+    }
+
+    .project-list li {
+      margin-bottom: 1.2rem;
+      padding: 0.8rem;
+      border-left: 3px solid var(--link);
+      background: rgba(156, 123, 70, 0.1); /* beige tint */
+      border-radius: 4px;
+    }
+
+    body.dark .project-list li {
+      background: rgba(88, 101, 242, 0.08); /* blurple tint */
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #666;
+      border-top: 1px solid var(--border);
+    }
+    body.dark footer {
+      color: #999;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-gray-200 min-h-screen p-8">
+<body class="dark">
+  <header>
+    <div>
+      <h1>zeqqe.dev</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#projects">PROJECTS</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+    <button id="mode-toggle" aria-label="Toggle Dark Mode">
+      <i class="fas fa-sun"></i>
+    </button>
+  </header>
 
-    <main class="max-w-4xl mx-auto">
+  <main>
+    <section id="about">
+      <h2>ABOUT</h2>
+      <p>
+        This is an open-source portfolio documenting my projects and development principles. It showcases curated work reflecting clarity and structure, both in code and interface.
+      </p>
+    </section>
 
-        <!-- Header Section -->
-        <header class="mb-12">
-            <h1 class="text-4xl font-bold tracking-tight leading-none mb-4 text-emerald-300">zeqqe.dev</h1>
-            <p class="text-xl text-gray-400">
-                An open-source portfolio documenting my projects and development principles.
-            </p>
-        </header>
+    <section id="projects">
+      <h2>PROJECTS</h2>
+      <ul id="project-list" class="project-list">
+        <li>Loading projects...</li>
+      </ul>
+      <p>
+        <em>Site source code:</em>
+        <a href="https://github.com/Zeqqqe/zeqqe.github.io" target="_blank">Zeqqqe/zeqqe.github.io</a>
+      </p>
+    </section>
 
-        <!-- Main Content Sections -->
-        <section class="mb-10" id="about">
-            <h2 class="text-2xl font-bold mb-4">
-                <a href="#about" class="text-emerald-400 underline">ABOUT</a>
-            </h2>
-            <p class="mb-4">
-                This portfolio is a selection of my work, documenting my projects and development principles. It is a straightforward reference for the code and ideas I work with.
-            </p>
-            <p>
-                The goal is to showcase clarity through simple and clean structures. I believe in creating projects that are easy to understand and build upon.
-            </p>
-        </section>
+    <section id="contact">
+      <h2>CONTACT</h2>
+      <ul>
+        <li>Email: <a href="mailto:contact@zeqqe.dev">contact@zeqqe.dev</a></li>
+        <li>GitHub: <a href="https://github.com/zeqqqe" target="_blank">zeqqqe</a></li>
+        <li>Alternate GitHub: <a href="https://github.com/Zalgoo" target="_blank">Zalgoo</a></li>
+        <li>Bluesky: <a href="https://bsky.app/profile/zeqqe.dev" target="_blank">zeqqe.dev</a></li>
+        <li>Ko-fi: <a href="https://ko-fi.com/zeqqqe" target="_blank">zeqqqe</a></li>
+      </ul>
+    </section>
+  </main>
 
-        <!-- Projects Section -->
-        <section class="mb-10" id="projects">
-            <h2 class="text-2xl font-bold mb-4">
-                <a href="#projects" class="text-emerald-400 underline">PROJECTS</a>
-            </h2>
-            <pre id="projects-list" class="terminal-block whitespace-pre-wrap text-sm leading-relaxed bg-gray-800 border border-gray-700 p-4 rounded-lg shadow-lg">
-<span class="text-gray-400">Loading projects...</span>
-            </pre>
-        </section>
+  <footer>
+    <small>© 2025 zeqqe. All content on my GitHub is open source.</small>
+  </footer>
 
-        <!-- Final Content Section -->
-        <section class="mb-10" id="contact">
-            <h2 class="text-2xl font-bold mb-4">
-                <a href="#contact" class="text-emerald-400 underline">CONTACT</a>
-            </h2>
-            <div class="space-y-2">
-                <p>
-                    <span class="text-emerald-400">EMAIL:</span> <a href="mailto:contact@zeqqe.dev" class="text-gray-200 underline">contact@zeqqe.dev</a>
-                </p>
-                <p>
-                    <span class="text-emerald-400">PERSONAL GITHUB:</span> <a href="https://github.com/zeqqqe" class="text-gray-200 underline" target="_blank">github.com/zeqqqe</a>
-                </p>
-                <p>
-                    <span class="text-emerald-400">GITHUB:</span> <a href="https://github.com/Zalgoo" class="text-gray-200 underline" target="_blank">github.com/Zalgoo</a>
-                </p>
-                <p>
-                    <span class="text-emerald-400">BLUESKY:</span> <a href="https://bsky.app/profile/zeqqe.dev" class="text-gray-200 underline" target="_blank">bsky.app/profile/zeqqe.dev</a>
-                </p>
-            </div>
-        </section>
+  <script>
+    const reposToShow = [
+      "Zalgoo/Zoidberg",
+      "Zalgoo/Python-Text-To-Speech",
+      "Zalgoo/ASCII"
+    ];
+    const projectList = document.getElementById("project-list");
 
-        <!-- Footer -->
-        <footer class="mt-12 pt-6 border-t border-gray-700 text-sm text-gray-400 flex justify-between">
-            <div class="w-full">
-                <p>&copy; 2025 zeqqe. All things on my GitHub are open source, and you are free to use them.</p>
-            </div>
-            <div class="w-full text-right">
-                <p>
-                    <a href="https://ko-fi.com/zeqqqe" class="text-gray-500 underline text-xs" target="_blank">Ko-fi: zeqqqe</a>
-                </p>
-            </div>
-        </footer>
+    projectList.innerHTML = "<li>Loading projects...</li>";
+    Promise.all(
+      reposToShow.map(repo =>
+        fetch(`https://api.github.com/repos/${repo}`).then(res => res.json())
+      )
+    )
+      .then(repos => {
+        projectList.innerHTML = "";
+        repos.forEach(repo => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <strong><a href="${repo.html_url}" target="_blank">${repo.full_name}</a></strong><br />
+            ${repo.description || "No description."}
+          `;
+          projectList.appendChild(li);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        projectList.innerHTML = "<li>Error loading projects.</li>";
+      });
 
-    </main>
+    const toggleBtn = document.getElementById("mode-toggle");
+    const icon = toggleBtn.querySelector("i");
 
-    <script>
-        window.onload = async function() {
-            const projectsListElement = document.getElementById('projects-list');
+    function setDarkMode(enabled) {
+      document.body.classList.toggle("dark", enabled);
+      icon.className = enabled ? "fas fa-sun" : "fas fa-moon";
+      localStorage.setItem("darkMode", enabled);
+    }
 
-            const repos = [
-                { owner: 'Zalgoo', repo: 'ASCII' },
-                { owner: 'Zalgoo', repo: 'Python-Text-To-Speech' },
-                { owner: 'Zalgoo', repo: 'methClicker.html' },
-                { owner: 'Zalgoo', repo: 'Zoidberg' },
-            ];
+    toggleBtn.addEventListener("click", () => {
+      const enabled = !document.body.classList.contains("dark");
+      setDarkMode(enabled);
+    });
 
-            const fetchPromises = repos.map(r => 
-                fetch(`https://api.github.com/repos/${r.owner}/${r.repo}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.json();
-                    })
-                    .then(data => data)
-                    .catch(error => {
-                        console.error('Error fetching repo data:', error);
-                        return null; // Return null on error so Promise.all doesn't fail
-                    })
-            );
-
-            try {
-                const results = await Promise.all(fetchPromises);
-                
-                let content = `> zeqqe.sh --list-projects\n\n`;
-
-                results.forEach(result => {
-                    if (result) {
-                        content += `    Project: <a href="${result.html_url}" class="text-emerald-400 underline" target="_blank">${result.name}</a>\n`;
-                        content += `      [INFO] ${result.description || 'No description provided.'}\n\n`;
-                    }
-                });
-
-                projectsListElement.innerHTML = content;
-            } catch (error) {
-                console.error("Failed to fetch all repositories:", error);
-                projectsListElement.innerHTML = `<span class="text-red-400">Error loading projects. Please try again later.</span>`;
-            }
-        };
-    </script>
+    // Default dark, but load saved mode if exists
+    const savedMode = localStorage.getItem("darkMode");
+    if (savedMode !== null) {
+      setDarkMode(savedMode === "true");
+    } else {
+      setDarkMode(true); // default to dark
+    }
+  </script>
 </body>
 </html>
