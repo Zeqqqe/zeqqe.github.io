@@ -2,6 +2,11 @@
 ### This is my website source HTML.
 
 
+##### Site Links:
+- [GitHub.io](https://zeqqqe.github.io/zeqqe.github.io/)
+- [zeqqe.dev](https://zeqqe.dev)
+
+
 #### Light Mode
 <img width="1919" height="890" alt="image" src="https://github.com/user-attachments/assets/cbe8393c-e263-4c0f-8453-426f2bd2d7bb" />
 
