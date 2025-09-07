@@ -4,8 +4,7 @@ import os
 import sys
 
 PREDEFINED_PACKAGES = [
-    "vim", "git", "htop", "curl", "firefox",
-    "neofetch", "tmux", "wget", "gcc", "make"
+    "nvim", "git", "curl", "fastfetch", "wget",
 ]
 SWAP_SIZES = [2, 4, 8, 16]  # GB options
 
