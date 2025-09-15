@@ -222,7 +222,7 @@ const htmlContent = `<!DOCTYPE html>
     projectList.innerHTML = "<li>Loading projects...</li>";
     Promise.all(
       reposToShow.map(repo =>
-        fetch(`https://api.github.com/repos/\${repo}`).then(res => res.json())
+        fetch(\`https://api.github.com/repos/\${repo}\`).then(res => res.json())
       )
     )
       .then(repos => {
