@@ -1,3 +1,4 @@
+// `index.html` content as a JavaScript string
 const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -269,8 +270,9 @@ export async function onRequest({ request }) {
   const userAgent = request.headers.get("user-agent") || "";
   const url = new URL(request.url);
 
-  if (userAgent.includes("curl") && url.pathname === "/") {
-    const textContent = `Welcome to www.zeqqe.dev, it seems you have use curl on this site, a very strange action to not return HTML.
+  if (url.pathname === "/") {
+    if (userAgent.includes("curl")) {
+      const textContent = `Welcome to www.zeqqe.dev, it seems you have use curl on this site, a very strange action to not return HTML.
 
 
                                  #
@@ -295,20 +297,20 @@ Email — contact@zeqqe.dev
 INFO:
 I am a Linux live environment user, and I have accumulated over 13 Gigabytes of Linux lice ISOs.`;
 
-    return new Response(textContent, {
-      headers: {
-        "Content-Type": "text/plain",
-      },
-    });
+      return new Response(textContent, {
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      });
+    } else {
+      return new Response(htmlContent, {
+        headers: {
+          "Content-Type": "text/html",
+        },
+      });
+    }
   }
 
-  if (url.pathname === "/") {
-    return new Response(htmlContent, {
-      headers: {
-        "Content-Type": "text/html",
-      },
-    });
-  }
-
+  // This will handle requests for other static assets like CSS, JS, etc.
   return new Response("Not Found", { status: 404 });
 }
