@@ -1,17 +1,18 @@
 export async function onRequest({ request, next }) {
-  const userAgent = request.headers.get("user-agent");
+  const userAgent = request.headers.get("user-agent") || "";
+  const url = new URL(request.url);
 
-  if (userAgent && userAgent.includes("curl")) {
-    const url = new URL(request.url);
-    if (url.pathname === "/") {
-      return new Response(null, {
-        status: 302,
-        headers: { Location: "/index.txt" },
-      });
-    }
+  // Check if it's a curl request and it's for the root path
+  if (userAgent.includes("curl") && url.pathname === "/") {
+    // Return the content of index.txt directly
+    return new Response(`Welcome to ${url.hostname}, it seems you have used curl on this site, a very strange action to not return HTML.
+
+[Your ASCII art and text content here]
+`, {
+      headers: { "Content-Type": "text/plain" },
+    });
   }
 
-  // If the User-Agent is not 'curl' or the path is not the root,
-  // continue to the next middleware or serve the static file.
+  // If not a curl request, let the default static site handling take over
   return await next();
 }
