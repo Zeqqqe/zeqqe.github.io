@@ -221,7 +221,7 @@ const htmlContent = `<!DOCTYPE html>
     projectList.innerHTML = "<li>Loading projects...</li>";
     Promise.all(
       reposToShow.map(repo =>
-        fetch(`https://api.github.com/repos/${repo}`).then(res => res.json())
+        fetch(`https://api.github.com/repos/\${repo}`).then(res => res.json())
       )
     )
       .then(repos => {
@@ -310,7 +310,5 @@ I am a Linux live environment user, and I have accumulated over 13 Gigabytes of 
     });
   }
 
-  // Handle other paths (e.g., /copyleft.html, images, etc.)
-  // This is a crucial addition to make the site fully functional.
   return new Response("Not Found", { status: 404 });
 }
