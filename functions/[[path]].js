@@ -1,8 +1,7 @@
-export async function onRequest({ request }) {
+export async function onRequest({ request, next }) {
   const userAgent = request.headers.get("user-agent") || "";
   const url = new URL(request.url);
 
-  // Check if the user-agent is 'curl' and the path is the root
   if (userAgent.includes("curl") && url.pathname === "/") {
     const textContent = `Welcome to www.zeqqe.dev, it seems you have use curl on this site, a very strange action to not return HTML.
 
@@ -29,14 +28,24 @@ Email — contact@zeqqe.dev
 INFO:
 I am a Linux live environment user, and I have accumulated over 13 Gigabytes of Linux lice ISOs.`;
 
-    // Return the text content directly
     return new Response(textContent, {
       headers: {
         "Content-Type": "text/plain",
       },
     });
+  } else if (url.pathname === "/") {
+    // Get the original response from Cloudflare Pages (your index.html)
+    const response = await next();
+    const originalBody = await response.text();
+
+    // Create a new response with the body from the original response
+    return new Response(originalBody, {
+      headers: {
+        "Content-Type": "text/html",
+      },
+    });
   }
 
-  // Otherwise, let the normal static site serving handle the request
-  return new Response(null, { status: 404 });
+  // For all other paths, let Cloudflare Pages handle them normally
+  return next();
 }
